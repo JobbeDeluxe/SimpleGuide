@@ -85,9 +85,13 @@ public class NavigatorService {
         String fmt = plugin.lang.msg(p, "bossbar_title_fmt");
         String plain = org.bukkit.ChatColor.stripColor(org.bukkit.ChatColor.translateAlternateColorCodes('&', fmt));
         Component name = Component.text(String.format(plain, title, dist));
-        BossBar bar = bars.computeIfAbsent(p.getUniqueId(), k -> BossBar.bossBar(name, 1.0f, BossBar.Color.BLUE, BossBar.Overlay.NOTCHED_10));
+        BossBar bar = bars.get(p.getUniqueId());
+        if (bar == null) {
+            bar = BossBar.bossBar(name, 1.0f, BossBar.Color.BLUE, BossBar.Overlay.NOTCHED_10);
+            bars.put(p.getUniqueId(), bar);
+            p.showBossBar(bar);
+        }
         bar.name(name);
-        p.showBossBar(bar);
     }
 
     public void clearBossbar(UUID id) {

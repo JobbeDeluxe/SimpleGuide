@@ -1,4 +1,4 @@
-# SimpleGuide v0.2.1 (Paper 1.21.x)
+# SimpleGuide v0.2.2 (Paper 1.21.x)
 
 Advancement Coach + Navigator + Context Assistant — **sidebar (top-right), GUI, help book**, and **real locate**.
 
@@ -35,3 +35,9 @@ Advancement Coach + Navigator + Context Assistant — **sidebar (top-right), GUI
 mvn -q -DskipTests package
 ```
 Jar: `target/simpleguide-0.2.1-shaded.jar`
+
+
+## Notes in 0.2.2
+- Sidebar shows **only visible lines** (no padding, no numbers).
+- BossBar name is **replaced**, not overdrawn.
+- Advancement hints fall back to the **vanilla description** if no mapping is present.

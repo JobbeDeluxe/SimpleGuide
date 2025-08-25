@@ -60,11 +60,6 @@ public class SidebarService {
         for (String e : new HashSet<>(sb.getEntries())) sb.resetScores(e);
     }
 
-    private String filler(int idx) {
-        // unique blank-looking entries using color codes
-        return org.bukkit.ChatColor.values()[idx % org.bukkit.ChatColor.values().length] + "";
-    }
-
     public void updateNow(Player p) {
         Scoreboard sb = boards.get(p.getUniqueId());
         if (sb == null) return;
@@ -77,14 +72,13 @@ public class SidebarService {
 
         String usage = plugin.lang.msg(p, "sidebar_usage");
 
-        int line = 15; // pin to top
-        if (adv != null) obj.getScore(ChatColor.GREEN + "1) " + adv.title).setScore(line--);
-        if (ctx1 != null) obj.getScore(ChatColor.YELLOW + "2) " + ctx1.title).setScore(line--);
-        if (ctx2 != null) obj.getScore(ChatColor.YELLOW + "3) " + ctx2.title).setScore(line--);
+        int line = 4;
+        if (adv != null) obj.getScore(ChatColor.GREEN + adv.title).setScore(line--);
+        if (ctx1 != null) obj.getScore(ChatColor.YELLOW + ctx1.title).setScore(line--);
+        if (ctx2 != null) obj.getScore(ChatColor.YELLOW + ctx2.title).setScore(line--);
         if (plugin.getConfig().getBoolean("sidebar.show_usage_line", true)) {
             obj.getScore(ChatColor.GRAY + usage).setScore(line--);
         }
-        for (int s = line; s >= 1; s--) obj.getScore(filler(s)).setScore(s);
     }
 
     private void scheduleUpdate(Player p) {

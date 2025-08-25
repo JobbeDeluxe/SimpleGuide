@@ -40,6 +40,9 @@ public class SuggestionService {
         boolean de = p.locale() != null && p.locale().getLanguage().toLowerCase(java.util.Locale.ROOT).startsWith("de");
         String title = goals.getString("advancements." + key + "." + (de ? "title_de" : "title_en"), key);
         String hint = goals.getString("advancements." + key + "." + (de ? "suggest_de" : "suggest_en"), "");
+        if ((hint == null || hint.isEmpty()) && best.getDisplay() != null && best.getDisplay().description() != null) {
+            hint = PlainTextComponentSerializer.plainText().serialize(best.getDisplay().description());
+        }
         String structure = goals.getString("advancements." + key + ".structure", null);
 
         if ((title == null || title.equals(key)) && best.getDisplay() != null && best.getDisplay().title() != null) {

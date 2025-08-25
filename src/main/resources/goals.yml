@@ -1,4 +1,25 @@
 advancements:
+
+  "minecraft:story/root":
+    title_en: "Minecraft"
+    title_de: "Minecraft"
+    suggest_en: "Open your inventory (E)."
+    suggest_de: "Öffne dein Inventar (E)."
+  "minecraft:story/upgrade_tools":
+    title_en: "Getting an Upgrade"
+    title_de: "Besseres Werkzeug"
+    suggest_en: "Craft a stone pickaxe."
+    suggest_de: "Craft eine Spitzhacke aus Stein."
+  "minecraft:adventure/sleep_in_bed":
+    title_en: "Sweet Dreams"
+    title_de: "Süße Träume"
+    suggest_en: "Sleep in a bed to skip the night."
+    suggest_de: "Schlafe in einem Bett, um die Nacht zu überspringen."
+  "minecraft:husbandry/plant_seed":
+    title_en: "A Seedy Place"
+    title_de: "Eine körnige Angelegenheit"
+    suggest_en: "Plant a seed and watch it grow."
+    suggest_de: "Pflanze Samen und lass sie wachsen."
   "minecraft:story/smelt_iron":
     title_en: "Smelt iron"
     title_de: "Eisen schmelzen"
