@@ -1,0 +1,25 @@
+name: SimpleGuide
+main: dev.yourserver.simpleguide.SimpleGuidePlugin
+version: 0.2.1
+api-version: '1.20'
+load: POSTWORLD
+
+commands:
+  guide:
+    description: Open/Control the SimpleGuide (Coach + Navigator)
+    usage: |
+      /guide
+      /guide on|off
+      /guide book
+      /guide target <x> <y> <z>
+      /guide locate <structure>
+      /guide gui
+    permission: simpleguide.use
+
+permissions:
+  simpleguide.use:
+    default: true
+    description: Allows using SimpleGuide
+  simpleguide.admin:
+    default: op
+    description: Admin functions

@@ -1,0 +1,33 @@
+prefix: "&7[&bWegweiser&7]&r "
+no_permission: "&cKeine Berechtigung."
+player_only: "&cNur ingame nutzbar."
+reloaded: "&aConfig & Daten neu geladen."
+usage_hint: "&8Tipp: &7/guide book &8| &7/guide on/off"
+
+navigator_on: "&aWegweiser aktiviert."
+navigator_off: "&6Wegweiser deaktiviert."
+navigator_target_set: "&aZiel gesetzt: &f%s"
+navigator_target_cleared: "&6Ziel gelöscht."
+navigator_locating: "&7Suche nach &f%s&7..."
+navigator_locate_failed: "&cKein Ziel gefunden: &f%s"
+
+book_title: "Wegweiser – Nächste Schritte"
+book_author: "Serverteam"
+book_section_adv: "Fortschritt"
+book_section_ctx: "Tipps"
+book_section_nav: "Navigation"
+
+sidebar_title: "&bWegweiser"
+sidebar_adv: "&a1) %s"
+sidebar_ctx1: "&e2) %s"
+sidebar_ctx2: "&e3) %s"
+sidebar_usage: "&8/guide book"
+
+bossbar_title_fmt: "↗ %s – %dm"
+
+gui_title: "&3Wegweiser"
+gui_toggle_on: "&aNavigator: AN"
+gui_toggle_off: "&cNavigator: AUS"
+gui_book: "&bHilfe-Buch erhalten"
+gui_clear: "&6Ziel löschen"
+gui_locate: "&bSuche: %s"

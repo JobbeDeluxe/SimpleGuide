@@ -1,0 +1,51 @@
+advancements:
+  "minecraft:story/smelt_iron":
+    title_en: "Smelt iron"
+    title_de: "Eisen schmelzen"
+    suggest_en: "Smelt iron ore in a furnace (fuel: coal/wood)."
+    suggest_de: "Schmelze Eisenerz im Ofen (Brennstoff: Kohle/Holz)."
+  "minecraft:story/iron_tools":
+    title_en: "Iron tools"
+    title_de: "Eisenwerkzeuge"
+    suggest_en: "Craft iron tools (pickaxe first)."
+    suggest_de: "Craft dir Eisenwerkzeuge (Spitzhacke zuerst)."
+  "minecraft:story/enter_the_nether":
+    title_en: "Enter the Nether"
+    title_de: "Nether betreten"
+    suggest_en: "Build a Nether portal (obsidian + flint and steel)."
+    suggest_de: "Baue ein Nether-Portal (Obsidian + Feuerzeug)."
+    structure: "fortress"
+  "minecraft:nether/find_fortress":
+    title_en: "Find a fortress"
+    title_de: "Netherfestung finden"
+    suggest_en: "Find a Nether fortress and get blaze rods."
+    suggest_de: "Finde eine Netherfestung und sammle Blaze-Rods."
+    structure: "fortress"
+  "minecraft:story/follow_ender_eye":
+    title_en: "Find a stronghold"
+    title_de: "Stronghold finden"
+    suggest_en: "Throw eyes of ender until the stronghold."
+    suggest_de: "Wirf Enderaugen bis zur Festung."
+    structure: "stronghold"
+
+structures:
+  "village":
+    title_en: "Village"
+    title_de: "Dorf"
+    suggest_en: "Find a village (beds, trades, food)."
+    suggest_de: "Finde ein Dorf (Betten, Handel, Essen)."
+  "fortress":
+    title_en: "Nether Fortress"
+    title_de: "Netherfestung"
+    suggest_en: "Secure blaze rods for brewing and ender eyes."
+    suggest_de: "Sichere Blaze-Rods für Brauen & Enderaugen."
+  "stronghold":
+    title_en: "Stronghold"
+    title_de: "Stronghold"
+    suggest_en: "Find the End portal with ender eyes."
+    suggest_de: "Suche das Endportal mit Enderaugen."
+  "monument":
+    title_en: "Ocean Monument"
+    title_de: "Ozeanmonument"
+    suggest_en: "Explore a monument – beware guardians!"
+    suggest_de: "Erkunde ein Monument – Vorsicht Wächter!"

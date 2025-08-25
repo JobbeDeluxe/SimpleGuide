@@ -1,0 +1,33 @@
+prefix: "&7[&bSimpleGuide&7]&r "
+no_permission: "&cNo permission."
+player_only: "&cIn-game only."
+reloaded: "&aConfig & data reloaded."
+usage_hint: "&8Tip: &7/guide book &8| &7/guide on/off"
+
+navigator_on: "&aNavigator enabled."
+navigator_off: "&6Navigator disabled."
+navigator_target_set: "&aTarget set: &f%s"
+navigator_target_cleared: "&6Target cleared."
+navigator_locating: "&7Locating &f%s&7..."
+navigator_locate_failed: "&cNo target found: &f%s"
+
+book_title: "SimpleGuide – Next Steps"
+book_author: "Server Team"
+book_section_adv: "Progress"
+book_section_ctx: "Tips"
+book_section_nav: "Navigation"
+
+sidebar_title: "&bSimpleGuide"
+sidebar_adv: "&a1) %s"
+sidebar_ctx1: "&e2) %s"
+sidebar_ctx2: "&e3) %s"
+sidebar_usage: "&8/guide book"
+
+bossbar_title_fmt: "↗ %s – %dm"
+
+gui_title: "&3SimpleGuide"
+gui_toggle_on: "&aNavigator: ON"
+gui_toggle_off: "&cNavigator: OFF"
+gui_book: "&bGet Help Book"
+gui_clear: "&6Clear Target"
+gui_locate: "&bLocate: %s"

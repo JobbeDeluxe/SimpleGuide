@@ -1,0 +1,73 @@
+package dev.yourserver.simpleguide;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import org.bukkit.Bukkit;
+import org.bukkit.advancement.Advancement;
+import org.bukkit.advancement.AdvancementProgress;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.Statistic;
+
+import java.io.File;
+import java.util.Iterator;
+
+public class SuggestionService {
+    private final SimpleGuidePlugin plugin;
+    private final YamlConfiguration goals;
+
+    public SuggestionService(SimpleGuidePlugin plugin) {
+        this.plugin = plugin;
+        this.goals = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "goals.yml"));
+    }
+
+    public Suggestion nextAdvancementSuggestion(Player p) {
+        Advancement best = null;
+        int bestLeft = Integer.MAX_VALUE;
+        for (Iterator<Advancement> it = Bukkit.advancementIterator(); it.hasNext();) {
+            Advancement adv = it.next();
+            if (!"minecraft".equals(adv.getKey().getNamespace())) continue;
+            AdvancementProgress pr = p.getAdvancementProgress(adv);
+            if (pr.isDone()) continue;
+            int left = pr.getRemainingCriteria().size();
+            if (left < bestLeft) {
+                bestLeft = left;
+                best = adv;
+            }
+        }
+        if (best == null) return null;
+        String key = best.getKey().toString();
+        boolean de = p.locale() != null && p.locale().getLanguage().toLowerCase(java.util.Locale.ROOT).startsWith("de");
+        String title = goals.getString("advancements." + key + "." + (de ? "title_de" : "title_en"), key);
+        String hint = goals.getString("advancements." + key + "." + (de ? "suggest_de" : "suggest_en"), "");
+        String structure = goals.getString("advancements." + key + ".structure", null);
+
+        if ((title == null || title.equals(key)) && best.getDisplay() != null && best.getDisplay().title() != null) {
+            Component c = best.getDisplay().title();
+            title = PlainTextComponentSerializer.plainText().serialize(c);
+        }
+        return new Suggestion(title, hint, structure);
+    }
+
+    public Suggestion contextSuggestionPrimary(Player p) {
+        boolean de = p.locale() != null && p.locale().getLanguage().toLowerCase(java.util.Locale.ROOT).startsWith("de");
+        if (p.getFoodLevel() <= plugin.getConfig().getInt("context.hunger_threshold", 6)) {
+            return new Suggestion(de ? "Essen besorgen" : "Get food",
+                    de ? "Weizen farmen, Brot backen, Tiere züchten." : "Farm wheat, bake bread, breed animals.", null);
+        }
+        int deaths = p.getStatistic(Statistic.DEATHS);
+        if (deaths >= plugin.getConfig().getInt("context.death_threshold", 3)) {
+            return new Suggestion(de ? "Besser schützen" : "Improve defense",
+                    de ? "Schild + Rüstung craften, Bett setzen." : "Craft shield & armor, set a bed spawn.", null);
+        }
+        return new Suggestion(de ? "Dorf finden" : "Find a village",
+                de ? "Betten, Handel, Essen." : "Beds, trades, food.", "village");
+    }
+
+    public Suggestion contextSuggestionSecondary(Player p) {
+        boolean de = p.locale() != null && p.locale().getLanguage().toLowerCase(java.util.Locale.ROOT).startsWith("de");
+        return new Suggestion(de ? "Verzauberungen" : "Enchanting",
+                de ? "Baue einen Verzauberungstisch (4 Obsi, 2 Dia, 1 Buch)." : "Build an enchanting table (4 obsidian, 2 diamond, 1 book).",
+                null);
+    }
+}

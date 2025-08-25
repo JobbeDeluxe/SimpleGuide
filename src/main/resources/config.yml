@@ -1,0 +1,25 @@
+configVersion: 1
+locale: en   # default language when player locale can't be detected
+
+sidebar:
+  title_en: "&bSimpleGuide"
+  title_de: "&bWegweiser"
+  show_usage_line: true
+  update_interval_ticks: 60
+
+navigator:
+  enabled_by_default: true
+  use_bossbar: true
+  use_compass: true
+  particle_ping_on_set: true
+  locate_radius: 2048
+  locate_unexplored: false
+
+coach:
+  max_suggestions: 3
+  weight_advancement_first: true
+
+context:
+  hunger_threshold: 6
+  death_window_minutes: 10
+  death_threshold: 3
