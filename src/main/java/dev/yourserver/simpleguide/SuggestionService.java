@@ -14,11 +14,13 @@ import java.util.Iterator;
 
 public class SuggestionService {
     private final SimpleGuidePlugin plugin;
+    private final AdvLocalization advLoc;
     private final YamlConfiguration goals;
 
     public SuggestionService(SimpleGuidePlugin plugin) {
         this.plugin = plugin;
         this.goals = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "goals.yml"));
+        this.advLoc = plugin.advLoc;
     }
 
     public Suggestion nextAdvancementSuggestion(Player p) {
@@ -38,8 +40,12 @@ public class SuggestionService {
         if (best == null) return null;
         String key = best.getKey().toString();
         boolean de = p.locale() != null && p.locale().getLanguage().toLowerCase(java.util.Locale.ROOT).startsWith("de");
-        String title = goals.getString("advancements." + key + "." + (de ? "title_de" : "title_en"), key);
-        String hint = goals.getString("advancements." + key + "." + (de ? "suggest_de" : "suggest_en"), "");
+        String title = de ? advLoc.title(p, key) : null;
+        if (title == null) title = goals.getString("advancements." + key + "." + (de ? "title_de" : "title_en"), key);
+        String hint = de ? advLoc.description(p, key) : null;
+        if (hint == null || hint.isEmpty()) {
+            hint = goals.getString("advancements." + key + "." + (de ? "suggest_de" : "suggest_en"), "");
+        }
         if ((hint == null || hint.isEmpty()) && best.getDisplay() != null && best.getDisplay().description() != null) {
             hint = PlainTextComponentSerializer.plainText().serialize(best.getDisplay().description());
         }

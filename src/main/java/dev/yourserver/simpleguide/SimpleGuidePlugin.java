@@ -14,9 +14,11 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
     Lang lang;
     SidebarService sidebar;
+    HudBossbarService hud;
     NavigatorService navigator;
     SuggestionService suggestions;
     BookService books;
+    AdvLocalization advLoc;
 
     @Override
     public void onEnable() {
@@ -27,9 +29,11 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
         lang = new Lang(this);
         sidebar = new SidebarService(this);
+        hud = new HudBossbarService(this);
         navigator = new NavigatorService(this);
         suggestions = new SuggestionService(this);
         books = new BookService(this);
+        advLoc = new AdvLocalization(this);
 
         getServer().getPluginManager().registerEvents(this, this);
         GuideCommand guide = new GuideCommand(this);
@@ -42,7 +46,7 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        sidebar.startFor(p);
+        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.startFor(p); else hud.startFor(p);
         if (getConfig().getBoolean("navigator.enabled_by_default", true)) {
             navigator.setEnabled(p.getUniqueId(), true, p);
         }
@@ -50,12 +54,12 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        sidebar.stopFor(e.getPlayer());
+        sidebar.stopFor(e.getPlayer()); hud.stopFor(e.getPlayer());
         navigator.clearBossbar(e.getPlayer().getUniqueId());
     }
 
     @EventHandler
     public void onAdvancement(PlayerAdvancementDoneEvent e) {
-        sidebar.updateSoon(e.getPlayer());
+        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.updateSoon(e.getPlayer()); else hud.updateNow(e.getPlayer());
     }
 }

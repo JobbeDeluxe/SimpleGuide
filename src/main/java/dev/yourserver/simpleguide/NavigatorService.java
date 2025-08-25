@@ -59,6 +59,7 @@ public class NavigatorService {
         }
         if (plugin.getConfig().getBoolean("navigator.use_bossbar", true)) {
             updateBossbar(p, title, loc);
+            updateBossbar(p, directionArrow(p, loc) + " " + loc.getBlockX()+"," + loc.getBlockY()+","+loc.getBlockZ(), loc);
         }
         p.sendMessage(plugin.lang.msgf(p, "navigator_target_set", title));
     }
@@ -134,7 +135,10 @@ public class NavigatorService {
                 java.lang.reflect.Method locate = p.getWorld().getClass().getMethod("locateNearestStructure", Location.class, StructureResolver.structureClass, int.class, boolean.class);
                 Location found = (Location) locate.invoke(p.getWorld(), p.getLocation(), type, radius, unexplored);
                 if (found != null) {
-                    setTarget(p, found, key);
+                    org.bukkit.World w = p.getWorld();
+                    int y = w.getHighestBlockYAt(found);
+                    Location surface = new Location(w, found.getX(), Math.max(64, y + 1), found.getZ());
+                    setTarget(p, surface, key);
                 } else {
                     p.sendMessage(plugin.lang.msgf(p, "navigator_locate_failed", key));
                 }

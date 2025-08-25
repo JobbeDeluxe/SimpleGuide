@@ -70,3 +70,19 @@ structures:
     title_de: "Ozeanmonument"
     suggest_en: "Explore a monument – beware guardians!"
     suggest_de: "Erkunde ein Monument – Vorsicht Wächter!"
+
+  "minecraft:story/upgrade_tools":
+    title_en: "Getting an Upgrade"
+    title_de: "Besseres Werkzeug"
+    suggest_en: "Craft a stone pickaxe at a crafting table."
+    suggest_de: "Craft eine Spitzhacke aus Stein an der Werkbank."
+  "minecraft:story/deflect_arrow":
+    title_en: "Not Today, Thank You"
+    title_de: "Heute nicht, danke"
+    suggest_en: "Deflect an arrow with a shield."
+    suggest_de: "Blocke einen Pfeil mit einem Schild."
+  "minecraft:nether/return_to_sender":
+    title_en: "Return to Sender"
+    title_de: "Zurück an den Absender"
+    suggest_en: "Destroy a Ghast with its own fireball."
+    suggest_de: "Vernichte einen Ghast mit seiner eigenen Feuerkugel."

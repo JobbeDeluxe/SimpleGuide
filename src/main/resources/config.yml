@@ -23,3 +23,7 @@ context:
   hunger_threshold: 6
   death_window_minutes: 10
   death_threshold: 3
+
+
+display:
+  mode: bossbar   # bossbar | sidebar

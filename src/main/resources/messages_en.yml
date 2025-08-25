@@ -23,7 +23,7 @@ sidebar_ctx1: "&e2) %s"
 sidebar_ctx2: "&e3) %s"
 sidebar_usage: "&8/guide book"
 
-bossbar_title_fmt: "↗ %s – %dm"
+bossbar_title_fmt: "%s – %dm"
 
 gui_title: "&3SimpleGuide"
 gui_toggle_on: "&aNavigator: ON"

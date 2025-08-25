@@ -1,4 +1,4 @@
-# SimpleGuide v0.2.2 (Paper 1.21.x)
+# SimpleGuide v0.2.4 (Paper 1.21.x)
 
 Advancement Coach + Navigator + Context Assistant — **sidebar (top-right), GUI, help book**, and **real locate**.
 
@@ -41,3 +41,12 @@ Jar: `target/simpleguide-0.2.1-shaded.jar`
 - Sidebar shows **only visible lines** (no padding, no numbers).
 - BossBar name is **replaced**, not overdrawn.
 - Advancement hints fall back to the **vanilla description** if no mapping is present.
+
+- Bossbar format no longer includes a fixed arrow; arrow is fully dynamic.
+- Sidebar entries use scores **15..12** to anchor at top-right (no filler lines).
+- Located structure Y is set to terrain surface.
+
+
+## 0.2.4
+- New **HUD Bossbars** for the 3 guidance lines (top-center, no numbers). Config: `display.mode: bossbar` (default) or `sidebar`.
+- **German advancements**: built-in loader for `translations/de_de.json`. Drop the official file into `plugins/SimpleGuide/translations/` for full coverage.

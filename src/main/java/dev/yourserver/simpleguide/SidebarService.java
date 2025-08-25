@@ -72,7 +72,7 @@ public class SidebarService {
 
         String usage = plugin.lang.msg(p, "sidebar_usage");
 
-        int line = 4;
+        int line = 15;
         if (adv != null) obj.getScore(ChatColor.GREEN + adv.title).setScore(line--);
         if (ctx1 != null) obj.getScore(ChatColor.YELLOW + ctx1.title).setScore(line--);
         if (ctx2 != null) obj.getScore(ChatColor.YELLOW + ctx2.title).setScore(line--);
