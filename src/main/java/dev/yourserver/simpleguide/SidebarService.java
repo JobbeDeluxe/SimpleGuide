@@ -53,6 +53,7 @@ public class SidebarService {
         } else {
             obj.setDisplayName(colored);
         }
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         return obj;
     }
 

@@ -26,4 +26,8 @@ context:
 
 
 display:
-  mode: bossbar   # bossbar | sidebar
+  mode: sidebar   # bossbar | sidebar
+
+sidebar:
+  force_sidebar: true  # re-apply our objective periodically to keep it on top
+  hide_numbers_hint: false  # numbers in sidebar can't be truly hidden by vanilla client

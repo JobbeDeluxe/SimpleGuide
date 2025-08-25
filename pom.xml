@@ -5,7 +5,7 @@
 
   <groupId>dev.yourserver</groupId>
   <artifactId>simpleguide</artifactId>
-  <version>0.2.4</version>
+  <version>0.2.5</version>
   <packaging>jar</packaging>
   <name>SimpleGuide</name>
   <description>Advancement Coach + Navigator + Context Assistant with sidebar UI, GUI and real locate.</description>

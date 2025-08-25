@@ -46,7 +46,7 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.startFor(p); else hud.startFor(p);
+        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) if (getConfig().getString("display.mode","sidebar").equalsIgnoreCase("sidebar")) sidebar.startFor(p); else if (hud!=null) hud.startFor(p); else hud.startFor(p);
         if (getConfig().getBoolean("navigator.enabled_by_default", true)) {
             navigator.setEnabled(p.getUniqueId(), true, p);
         }
@@ -54,12 +54,12 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        sidebar.stopFor(e.getPlayer()); hud.stopFor(e.getPlayer());
+        sidebar.stopFor(e.getPlayer()); if (hud!=null) hud.stopFor(e.getPlayer());
         navigator.clearBossbar(e.getPlayer().getUniqueId());
     }
 
     @EventHandler
     public void onAdvancement(PlayerAdvancementDoneEvent e) {
-        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.updateSoon(e.getPlayer()); else hud.updateNow(e.getPlayer());
+        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.updateSoon(e.getPlayer()); else if (hud!=null) hud.updateNow(e.getPlayer());
     }
 }

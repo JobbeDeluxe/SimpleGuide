@@ -1,4 +1,4 @@
-# SimpleGuide v0.2.4 (Paper 1.21.x)
+# SimpleGuide v0.2.5 (Paper 1.21.x)
 
 Advancement Coach + Navigator + Context Assistant — **sidebar (top-right), GUI, help book**, and **real locate**.
 
@@ -50,3 +50,9 @@ Jar: `target/simpleguide-0.2.1-shaded.jar`
 ## 0.2.4
 - New **HUD Bossbars** for the 3 guidance lines (top-center, no numbers). Config: `display.mode: bossbar` (default) or `sidebar`.
 - **German advancements**: built-in loader for `translations/de_de.json`. Drop the official file into `plugins/SimpleGuide/translations/` for full coverage.
+
+
+## 0.2.5
+- Default back to **sidebar** (top-right). Added `sidebar.force_sidebar` to keep it pinned if other plugins change the scoreboard.
+- Fixed a startup **NPE** (localization init order).
+- Note: Vanilla client always shows a right-side number in sidebars; true hiding isn't possible without resource packs. We keep numbers minimal.
