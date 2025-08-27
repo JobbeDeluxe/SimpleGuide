@@ -23,19 +23,19 @@ public class BookService {
         meta.setTitle(plugin.lang.msg(p, "book_title"));
         meta.setAuthor(plugin.lang.msg(p, "book_author"));
 
-        Component page1 = Component.text(plugin.lang.msg(p, "book_section_adv")).color(NamedTextColor.GOLD)
+        Component page1 = Component.text(plugin.lang.msg(p, "book_section_adv")).color(NamedTextColor.DARK_BLUE)
                 .append(Component.newline())
-                .append(Component.text((adv != null ? adv.title : "—")).color(NamedTextColor.WHITE))
+                .append(Component.text((adv != null ? adv.title : "—")).color(NamedTextColor.BLACK))
                 .append(Component.newline())
-                .append(Component.text(adv != null ? adv.hint : "").color(NamedTextColor.GRAY))
+                .append(Component.text(adv != null ? adv.hint : "").color(NamedTextColor.BLACK))
                 .append(Component.newline()).append(Component.newline())
-                .append(Component.text(plugin.lang.msg(p, "book_section_ctx")).color(NamedTextColor.GOLD))
+                .append(Component.text(plugin.lang.msg(p, "book_section_ctx")).color(NamedTextColor.DARK_BLUE))
                 .append(Component.newline())
-                .append(Component.text("• " + (ctx1 != null ? ctx1.title : "—")).color(NamedTextColor.WHITE))
-                .append(Component.newline()).append(Component.text(ctx1 != null ? ctx1.hint : "").color(NamedTextColor.GRAY))
+                .append(Component.text("• " + (ctx1 != null ? ctx1.title : "—")).color(NamedTextColor.BLACK))
+                .append(Component.newline()).append(Component.text(ctx1 != null ? ctx1.hint : "").color(NamedTextColor.BLACK))
                 .append(Component.newline())
-                .append(Component.text("• " + (ctx2 != null ? ctx2.title : "—")).color(NamedTextColor.WHITE))
-                .append(Component.newline()).append(Component.text(ctx2 != null ? ctx2.hint : "").color(NamedTextColor.GRAY));
+                .append(Component.text("• " + (ctx2 != null ? ctx2.title : "—")).color(NamedTextColor.BLACK))
+                .append(Component.newline()).append(Component.text(ctx2 != null ? ctx2.hint : "").color(NamedTextColor.BLACK));
         meta.addPages(page1);
 
         Component page2 = Component.text(plugin.lang.msg(p, "book_section_nav")).color(NamedTextColor.BLUE)

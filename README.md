@@ -1,4 +1,4 @@
-# SimpleGuide v0.3.0 (Paper 1.21.x)
+# SimpleGuide v0.3.1 (Paper 1.21.x)
 
 Advancement Coach + Navigator + Context Assistant — **Sidebar HUD (top-right)**, GUI & help book, and **real locate**.
 
@@ -40,3 +40,9 @@ Jar: `target/simpleguide-0.2.6-shaded.jar`
 ## 0.3.0
 - **Vollständige deutsche Advancement-Texte** via Adventure `GlobalTranslator` – automatisch anhand der Spielersprache.
 - Reihenfolge der Fallbacks: YAML-Override → GlobalTranslator (DE) → goals.yml → Schlüssel.
+
+
+## 0.3.1
+- **Book readability**: dark colors (headers DARK_BLUE, content BLACK).
+- **Config migration**: on first run, config is bumped to `configVersion: 4` and defaults enforced (`display.mode: sidebar`, `sidebar.show_usage_line: false`).
+- **DE localization**: still uses GlobalTranslator, with fallback to our `de_de.yml` if the rendered text looks English.

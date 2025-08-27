@@ -14,6 +14,13 @@ import java.io.File;
 import java.util.Iterator;
 
 public class SuggestionService {
+    private boolean looksEnglish(String s) {
+        if (s == null) return true;
+        for (char c : s.toCharArray()) {
+            if (c >= 128) return false;
+        }
+        return true;
+    }
     private final SimpleGuidePlugin plugin;
     private final YamlConfiguration goals;
     private final AdvLocalization advLoc;
@@ -55,6 +62,10 @@ public class SuggestionService {
             java.util.Locale loc = p.locale() != null ? p.locale() : java.util.Locale.ENGLISH;
             Component d = GlobalTranslator.render(best.getDisplay().description(), loc);
             hint = PlainTextComponentSerializer.plainText().serialize(d);
+            if (de && looksEnglish(hint)) {
+                String over = advLoc.description(p, key);
+                if (over != null) hint = over;
+            }
         }
         if (hint == null || hint.isEmpty()) hint = goals.getString("advancements." + key + "." + (de ? "suggest_de" : "suggest_en"), "");
 
