@@ -4,6 +4,7 @@
 [![Release](https://img.shields.io/github/v/release/JobbeDeluxe/SimpleGuide?sort=semver)](https://github.com/JobbeDeluxe/SimpleGuide/releases)
 [![Downloads](https://img.shields.io/github/downloads/JobbeDeluxe/SimpleGuide/total.svg)](https://github.com/JobbeDeluxe/SimpleGuide/releases)
 
+
 # SimpleGuide v0.3.1 (Paper 1.21.x)
 
 **SimpleGuide** is a lightweight “what should I do next?” helper for Paper/Spigot 1.20–1.21.
