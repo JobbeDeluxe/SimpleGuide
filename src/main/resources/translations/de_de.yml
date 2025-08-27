@@ -1,0 +1,22 @@
+advancements:
+
+  nether:
+    obtain_crying_obsidian:
+      title: "Wer schneidet hier Zwiebeln?"
+      description: "Erhalte heulenden Obsidian."
+  story:
+    root:
+      title: "Minecraft"
+      description: "Öffne dein Inventar (E)."
+    enter_the_nether:
+      title: "Nether betreten"
+      description: "Baue ein Nether-Portal aus Obsidian."
+    follow_ender_eye:
+      title: "Die Festung finden"
+      description: "Nutze Enderaugen, um eine Festung aufzuspüren."
+    smelt_iron:
+      title: "Eisen schmelzen"
+      description: "Schmelze Eisenerz in einem Ofen."
+    iron_tools:
+      title: "Eisenwerkzeuge"
+      description: "Stelle Eisenwerkzeuge her."

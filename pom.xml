@@ -5,10 +5,9 @@
 
   <groupId>dev.yourserver</groupId>
   <artifactId>simpleguide</artifactId>
-  <version>0.2.5</version>
+  <version>0.3.0</version>
   <packaging>jar</packaging>
   <name>SimpleGuide</name>
-  <description>Advancement Coach + Navigator + Context Assistant with sidebar UI, GUI and real locate.</description>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>

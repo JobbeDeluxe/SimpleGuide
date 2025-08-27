@@ -8,13 +8,15 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Objects;
 
 public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
     Lang lang;
     SidebarService sidebar;
-    HudBossbarService hud;
     NavigatorService navigator;
     SuggestionService suggestions;
     BookService books;
@@ -26,14 +28,15 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
         saveResource("messages_en.yml", false);
         saveResource("messages_de.yml", false);
         saveResource("goals.yml", false);
+        saveResource("translations/de_de.yml", false);
+        
 
+        advLoc = new AdvLocalization(this);
         lang = new Lang(this);
         sidebar = new SidebarService(this);
-        hud = new HudBossbarService(this);
         navigator = new NavigatorService(this);
         suggestions = new SuggestionService(this);
         books = new BookService(this);
-        advLoc = new AdvLocalization(this);
 
         getServer().getPluginManager().registerEvents(this, this);
         GuideCommand guide = new GuideCommand(this);
@@ -43,10 +46,12 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
         getLogger().info("SimpleGuide enabled.");
     }
 
+    
+
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) if (getConfig().getString("display.mode","sidebar").equalsIgnoreCase("sidebar")) sidebar.startFor(p); else if (hud!=null) hud.startFor(p); else hud.startFor(p);
+        sidebar.startFor(p);
         if (getConfig().getBoolean("navigator.enabled_by_default", true)) {
             navigator.setEnabled(p.getUniqueId(), true, p);
         }
@@ -54,12 +59,12 @@ public class SimpleGuidePlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        sidebar.stopFor(e.getPlayer()); if (hud!=null) hud.stopFor(e.getPlayer());
+        sidebar.stopFor(e.getPlayer());
         navigator.clearBossbar(e.getPlayer().getUniqueId());
     }
 
     @EventHandler
     public void onAdvancement(PlayerAdvancementDoneEvent e) {
-        if (getConfig().getString("display.mode","bossbar").equalsIgnoreCase("sidebar")) sidebar.updateSoon(e.getPlayer()); else if (hud!=null) hud.updateNow(e.getPlayer());
+        sidebar.updateSoon(e.getPlayer());
     }
 }

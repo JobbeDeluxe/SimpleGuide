@@ -7,7 +7,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Field;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
@@ -59,6 +58,7 @@ public class NavigatorService {
         }
         if (plugin.getConfig().getBoolean("navigator.use_bossbar", true)) {
             updateBossbar(p, title, loc);
+            // immediate refresh with dynamic arrow
             updateBossbar(p, directionArrow(p, loc) + " " + loc.getBlockX()+"," + loc.getBlockY()+","+loc.getBlockZ(), loc);
         }
         p.sendMessage(plugin.lang.msgf(p, "navigator_target_set", title));
@@ -83,9 +83,7 @@ public class NavigatorService {
 
     public void updateBossbar(Player p, String title, Location loc) {
         int dist = (int) p.getLocation().distance(loc);
-        String fmt = plugin.lang.msg(p, "bossbar_title_fmt");
-        String plain = org.bukkit.ChatColor.stripColor(org.bukkit.ChatColor.translateAlternateColorCodes('&', fmt));
-        Component name = Component.text(String.format(plain, title, dist));
+        Component name = Component.text(String.format("%s – %dm", title, dist));
         BossBar bar = bars.get(p.getUniqueId());
         if (bar == null) {
             bar = BossBar.bossBar(name, 1.0f, BossBar.Color.BLUE, BossBar.Overlay.NOTCHED_10);
@@ -103,7 +101,7 @@ public class NavigatorService {
         }
     }
 
-    // ---- Real locate via reflection to support different Bukkit versions ----
+    // Real locate via reflection to support different Bukkit versions
     private static class StructureResolver {
         static Class<?> structureClass;
         static Object resolveType(String key) throws Exception {

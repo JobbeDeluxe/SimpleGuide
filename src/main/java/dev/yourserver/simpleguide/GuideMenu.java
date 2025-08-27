@@ -54,11 +54,15 @@ public class GuideMenu implements InventoryHolder, Listener {
         setItem(12, Material.WRITTEN_BOOK, plugin.lang.msg(viewer, "gui_book"),
                 "&7Left-Click to receive");
 
-        setItem(14, Material.ENDER_EYE, String.format(plugin.lang.msg(viewer, "gui_locate"), "Stronghold"),
+        String sStrong = plugin.suggestions.structureDisplay(viewer, "stronghold");
+        String sFort   = plugin.suggestions.structureDisplay(viewer, "fortress");
+        String sVillage= plugin.suggestions.structureDisplay(viewer, "village");
+
+        setItem(14, Material.ENDER_EYE, String.format(plugin.lang.msg(viewer, "gui_locate"), sStrong),
                 "&7Left-Click to locate");
-        setItem(15, Material.NETHER_BRICK, String.format(plugin.lang.msg(viewer, "gui_locate"), "Fortress"),
+        setItem(15, Material.NETHER_BRICK, String.format(plugin.lang.msg(viewer, "gui_locate"), sFort),
                 "&7Left-Click to locate");
-        setItem(16, Material.BELL, String.format(plugin.lang.msg(viewer, "gui_locate"), "Village"),
+        setItem(16, Material.BELL, String.format(plugin.lang.msg(viewer, "gui_locate"), sVillage),
                 "&7Left-Click to locate");
 
         setItem(22, Material.BARRIER, plugin.lang.msg(viewer, "gui_clear"), "&7Left-Click to clear target");

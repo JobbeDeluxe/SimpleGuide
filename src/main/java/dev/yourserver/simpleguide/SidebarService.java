@@ -49,7 +49,6 @@ public class SidebarService {
         Objective obj = sb.getObjective("simpleguide");
         if (obj == null) {
             obj = sb.registerNewObjective("simpleguide", "dummy", colored);
-            obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         } else {
             obj.setDisplayName(colored);
         }
@@ -73,10 +72,10 @@ public class SidebarService {
 
         String usage = plugin.lang.msg(p, "sidebar_usage");
 
-        int line = 15;
-        if (adv != null) obj.getScore(ChatColor.GREEN + adv.title).setScore(line--);
-        if (ctx1 != null) obj.getScore(ChatColor.YELLOW + ctx1.title).setScore(line--);
-        if (ctx2 != null) obj.getScore(ChatColor.YELLOW + ctx2.title).setScore(line--);
+        int line = 3;
+        if (adv != null) obj.getScore(ChatColor.GREEN + String.format(plugin.lang.msg(p, "sidebar_adv"), adv.title)).setScore(line--);
+        if (ctx1 != null) obj.getScore(ChatColor.YELLOW + String.format(plugin.lang.msg(p, "sidebar_ctx1"), ctx1.title)).setScore(line--);
+        if (ctx2 != null) obj.getScore(ChatColor.YELLOW + String.format(plugin.lang.msg(p, "sidebar_ctx2"), ctx2.title)).setScore(line--);
         if (plugin.getConfig().getBoolean("sidebar.show_usage_line", true)) {
             obj.getScore(ChatColor.GRAY + usage).setScore(line--);
         }

@@ -1,44 +1,31 @@
 package dev.yourserver.simpleguide;
 
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.Nullable;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 public class AdvLocalization {
-    private final JavaPlugin plugin;
-    private JSONObject de;
+    private final SimpleGuidePlugin plugin;
+    private YamlConfiguration de;
 
-    public AdvLocalization(JavaPlugin plugin) {
+    public AdvLocalization(SimpleGuidePlugin plugin) {
         this.plugin = plugin;
         reload();
     }
 
     public void reload() {
-        de = new JSONObject();
-        // try external override first: plugins/SimpleGuide/translations/de_de.json
-        try {
-            File ext = new File(plugin.getDataFolder(), "translations/de_de.json");
-            if (ext.exists()) {
-                try (FileReader r = new FileReader(ext, StandardCharsets.UTF_8)) {
-                    de = (JSONObject) new JSONParser().parse(r);
-                    return;
-                }
-            }
-        } catch (Throwable ignored) {}
-
-        // fallback to internal resource
-        try (InputStreamReader r = new InputStreamReader(plugin.getResource("translations/de_de.json"), StandardCharsets.UTF_8)) {
-            de = (JSONObject) new JSONParser().parse(r);
-        } catch (Throwable t) {
-            de = new JSONObject();
+        // external override: plugins/SimpleGuide/translations/de_de.yml
+        File ext = new File(plugin.getDataFolder(), "translations/de_de.yml");
+        if (ext.exists()) {
+            de = YamlConfiguration.loadConfiguration(ext);
+        } else {
+            de = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "translations/de_de.yml"));
+            try {
+                plugin.saveResource("translations/de_de.yml", false);
+                de = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "translations/de_de.yml"));
+            } catch (Throwable ignored) {}
         }
     }
 
@@ -51,25 +38,18 @@ public class AdvLocalization {
         }
     }
 
-    @Nullable
-    public String title(Player p, String advKeyMinecraftLike) {
-        if (!isGerman(p)) return null;
-        String langKey = toLangKey(advKeyMinecraftLike, "title");
-        Object v = de.get(langKey);
-        return v != null ? v.toString() : null;
+    private String path(String advKey, String tail) {
+        String path = advKey.replace("minecraft:", "").replace('/', '.');
+        return "advancements." + path + "." + tail;
     }
 
-    @Nullable
-    public String description(Player p, String advKeyMinecraftLike) {
+    public String title(Player p, String advKey) {
         if (!isGerman(p)) return null;
-        String langKey = toLangKey(advKeyMinecraftLike, "description");
-        Object v = de.get(langKey);
-        return v != null ? v.toString() : null;
+        return de.getString(path(advKey, "title"));
     }
 
-    // "minecraft:story/enter_the_nether" -> "advancements.story.enter_the_nether.title|description"
-    private String toLangKey(String mcKey, String suffix) {
-        String path = mcKey.replace("minecraft:", "").replace('/', '.');
-        return "advancements." + path + "." + suffix;
+    public String description(Player p, String advKey) {
+        if (!isGerman(p)) return null;
+        return de.getString(path(advKey, "description"));
     }
 }

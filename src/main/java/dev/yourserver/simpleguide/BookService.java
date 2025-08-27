@@ -23,19 +23,19 @@ public class BookService {
         meta.setTitle(plugin.lang.msg(p, "book_title"));
         meta.setAuthor(plugin.lang.msg(p, "book_author"));
 
-        Component page1 = Component.text(plugin.lang.msg(p, "book_section_adv")).color(NamedTextColor.AQUA)
+        Component page1 = Component.text(plugin.lang.msg(p, "book_section_adv")).color(NamedTextColor.GOLD)
                 .append(Component.newline())
-                .append(Component.text("1) " + (adv != null ? adv.title : "—")))
+                .append(Component.text((adv != null ? adv.title : "—")).color(NamedTextColor.WHITE))
                 .append(Component.newline())
-                .append(Component.text(adv != null ? adv.hint : ""))
+                .append(Component.text(adv != null ? adv.hint : "").color(NamedTextColor.GRAY))
                 .append(Component.newline()).append(Component.newline())
                 .append(Component.text(plugin.lang.msg(p, "book_section_ctx")).color(NamedTextColor.GOLD))
                 .append(Component.newline())
-                .append(Component.text("2) " + (ctx1 != null ? ctx1.title : "—")))
-                .append(Component.newline()).append(Component.text(ctx1 != null ? ctx1.hint : ""))
+                .append(Component.text("• " + (ctx1 != null ? ctx1.title : "—")).color(NamedTextColor.WHITE))
+                .append(Component.newline()).append(Component.text(ctx1 != null ? ctx1.hint : "").color(NamedTextColor.GRAY))
                 .append(Component.newline())
-                .append(Component.text("3) " + (ctx2 != null ? ctx2.title : "—")))
-                .append(Component.newline()).append(Component.text(ctx2 != null ? ctx2.hint : ""));
+                .append(Component.text("• " + (ctx2 != null ? ctx2.title : "—")).color(NamedTextColor.WHITE))
+                .append(Component.newline()).append(Component.text(ctx2 != null ? ctx2.hint : "").color(NamedTextColor.GRAY));
         meta.addPages(page1);
 
         Component page2 = Component.text(plugin.lang.msg(p, "book_section_nav")).color(NamedTextColor.BLUE)

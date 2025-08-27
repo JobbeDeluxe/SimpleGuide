@@ -1,11 +1,15 @@
-configVersion: 1
-locale: en   # default language when player locale can't be detected
+configVersion: 3
+locale: en
+
+display:
+  mode: sidebar   # sidebar only
 
 sidebar:
   title_en: "&bSimpleGuide"
   title_de: "&bWegweiser"
-  show_usage_line: true
+  show_usage_line: false
   update_interval_ticks: 60
+  force_sidebar: true
 
 navigator:
   enabled_by_default: true
@@ -23,11 +27,3 @@ context:
   hunger_threshold: 6
   death_window_minutes: 10
   death_threshold: 3
-
-
-display:
-  mode: sidebar   # bossbar | sidebar
-
-sidebar:
-  force_sidebar: true  # re-apply our objective periodically to keep it on top
-  hide_numbers_hint: false  # numbers in sidebar can't be truly hidden by vanilla client
